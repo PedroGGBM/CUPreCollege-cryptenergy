@@ -10,4 +10,4 @@ Hypothesis:
      - Energy consumption
      - Cryptocurrencies 
      - Cryptocurriency ratings (energy-wise)
-     - 
+     - https://www.kaggle.com/raczeq/impact-of-cryptocurrencies-rates-on-pc-market
