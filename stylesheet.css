@@ -160,6 +160,7 @@ body {
 	font-size: 36px;
 }
 
+	/* For the Split Textbox */
 .container-outline-blue-l {
   background-color: #2D3E4E;
   padding-top: 100px;
@@ -172,5 +173,43 @@ body {
 
 .container-outline-grey-r {
   background-color: #C7C7C7;
-  padding: 15px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  margin-left: 300px;
+  text-align: center;
+}
+
+	/* For the Larger Text Boxes */
+.pstyle {
+	background-color: #C7C7C7;
+	border-radius: 10px;
+    padding: 20px;
+    width: auto;
+	text-align: left;
+	margin-left: 50px;
+	margin-right: 50px;
+	border-style: outset;
+	font-size: 18px;
+}
+
+/* For the Project Link Downloads */
+.project-link {
+	display: block;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #E09E50;
+	border-radius: 10px;
+    padding: 10px;
+	width: 50%;
+	font-size: 20px;
+	text-style: bold;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
 }
