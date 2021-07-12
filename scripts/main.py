@@ -1,11 +1,11 @@
 # libraries
-import os
-import numpy as np
 import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
 from random import randint
 import requests
-import pandas as pd
 import pickle
+import os
 
 # data request using alpha vantage
 symbol = str(sys.argv[1]) #optional for terminal use
