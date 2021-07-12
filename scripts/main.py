@@ -21,8 +21,8 @@ import pandas as pd
 import pickle
 
 # data request using alpha vantage
-symbol = str(sys.argv[1])
-API_KEY = ''
+symbol = str(sys.argv[1]) #optional for terminal use
+API_KEY = 'Your Alphavantage key'
 
 # setup for the functions (query) for the url, csv notation was used:
 url = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY" + f"&symbol={symbol}&apikey={API_KEY}&outputsize=full&datatype=csv"
