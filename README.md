@@ -11,3 +11,4 @@ Hypothesis:
      - Cryptocurrencies 
      - Cryptocurriency ratings (energy-wise)
      - https://www.kaggle.com/danielluzzi/electrial-energy-daily-consumption
+     - https://www.alphavantage.co/documentation/
