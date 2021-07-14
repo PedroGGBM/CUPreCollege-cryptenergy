@@ -2,7 +2,7 @@
 # Research the Data & Problem (Regression) ----
 
 # Set WD ----
-setwd('C:/Users/Pedro G/OneDrive/Desktop/project_classification')
+setwd('set your wd')
 
 # Load Libraries ----
 source('functions/libraries.r')
