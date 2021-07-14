@@ -21,10 +21,15 @@ def write_crypto_data(data, symbol):
     doc = open(f"prices.{symbol}.csv", 'w')
     # for loop will be used to write (full outputsize) the date (index position [i][0])
     for i in range (0, len(data)):
-        doc.write(f"{str(data[i][0:5])} {str(data[i][9:11])}\n")
+        line_data = data[i][0:5] + data[i][9:11]
+        separator = ', '
+        doc.write(separator.join(line_data) + '\n')
+        # doc.write(f"{str(data[i][0:5])} {str(data[i][9:11])}\n")
     doc.close()
     # program output (not doc.write) for the stock symbol written through command line (argv)
     print(f"Wrote historical price data for {symbol} to file price.{symbol}.txt")
 
 data = get_crypto_raw(API_KEY, function, symbol, market)
 write_crypto_data(data, symbol)
+
+
