@@ -1,6 +1,6 @@
-BTC_energy <- read_csv("data/data-cFnri")
+BTC_energy <- read_csv("data/data-cFnri.csv")
 
-ETH_energy <- read_csv("data/data-ocIBH")
+ETH_energy <- read_csv("data/data-ocIBH.csv")
 
 ETH_data <- read_csv("data/prices.ETH.csv")
 
