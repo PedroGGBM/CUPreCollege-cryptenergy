@@ -11,7 +11,7 @@ ETH_energy = ETH_energy[, !colnames(ETH_energy) %in% c(remove)] # conditionally 
 
 # - [] - Subsetting Stuff ----
 
-remove = c("open (USD)", "high (USD)", 'low (USD)', 'volume', 'market cap (USD)')
+remove = c("open (USD)", "high (USD)", 'low (USD)', 'market cap (USD)')
 BTC_data = BTC_data[, !colnames(BTC_data) %in% c(remove)] # conditionally select the variables to remove from the dataframe. 
 colnames(BTC_data) <- c('timestamp', 'BTC_Close')
 
@@ -21,8 +21,8 @@ colnames(ETH_data) <- c('timestamp', 'ETH_Close')
 data0 = ETH_data %>% inner_join(BTC_data, by="timestamp")
 
 colnames(inflation_data) <- c('timestamp', 'breakeven_inflation')
-# - Fixing up breakeven inflation values ----
 
+# - Fixing up breakeven inflation values ----
 inflation_data[['breakeven_inflation']] <- as.numeric(inflation_data[['breakeven_inflation']])
 
 data1 = data0 %>% inner_join(inflation_data, by= 'timestamp')
