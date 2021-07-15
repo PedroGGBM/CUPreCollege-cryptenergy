@@ -13,10 +13,10 @@ ETH_energy = ETH_energy[, !colnames(ETH_energy) %in% c(remove)] # conditionally 
 
 remove = c("open (USD)", "high (USD)", 'low (USD)', 'market cap (USD)')
 BTC_data = BTC_data[, !colnames(BTC_data) %in% c(remove)] # conditionally select the variables to remove from the dataframe. 
-colnames(BTC_data) <- c('timestamp', 'BTC_Close')
+colnames(BTC_data) <- c('timestamp', 'BTC_Close', 'BTC_Volume')
 
 ETH_data = ETH_data[, !colnames(ETH_data) %in% c(remove)] # conditionally select the variables to remove from the dataframe. 
-colnames(ETH_data) <- c('timestamp', 'ETH_Close')
+colnames(ETH_data) <- c('timestamp', 'ETH_Close', 'ETH_Volume')
 
 data0 = ETH_data %>% inner_join(BTC_data, by="timestamp")
 
