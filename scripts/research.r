@@ -1,10 +1,10 @@
 # Research the Data & Problem ----
 
 # Set WD ----
-setwd("C:/Users/Pedro G/OneDrive/Desktop/final_project")
+setwd("C:/Users/Pedro G/OneDrive/Desktop/crypto-energy-final-project")
 
 # Load Libraries ----
-source("./functions/functions.r")
+source("./R functions/libraries.r")
 libraries()
 
 # Source Functions ----
@@ -16,14 +16,14 @@ data <- read_csv("data/data.csv")
 print(head(data))
 
 # Subset Ignoble Variables ----
-sub = data[,3:7]
+sub = data[,3:9]
 str(sub)
 
 # Explore the Original Data ----
 summary(sub) # summary stats 
 
 cor = cor(sub) # correlation 
-png("pictures/original/cor.png")
+png("pictures/original/cor_O.png")
 print(corrplot::corrplot(cor))    
 dev.off() 
 
@@ -107,12 +107,44 @@ png("pictures/original/breakeven_inflation_ggplot.png")
 print(p5)    
 dev.off()
 
+p6 = ggplot(data, aes(timestamp, BTC_Volume)) +
+  stat_summary(fun.y = mean, ##adds the points
+               geom = "point") +
+  stat_summary(fun.y = mean, ##adds the line
+               geom = "line",
+               aes(group=1)) +
+  stat_summary(fun.data = mean_cl_normal, ##adds the error bars
+               geom = "errorbar", 
+               width = .2) +
+  xlab('Time')+
+  ylab('Bitcoin Volume')
+
+png("pictures/original/BTC_Volume_ggplot.png")
+print(p6)    
+dev.off()
+
+p7 = ggplot(data, aes(timestamp, ETH_Volume)) +
+  stat_summary(fun.y = mean, ##adds the points
+               geom = "point") +
+  stat_summary(fun.y = mean, ##adds the line
+               geom = "line",
+               aes(group=1)) +
+  stat_summary(fun.data = mean_cl_normal, ##adds the error bars
+               geom = "errorbar", 
+               width = .2) +
+  xlab('Time')+
+  ylab('Ethereum Volume')
+
+png("pictures/original/ETH_Volume_ggplot.png")
+print(p7)    
+dev.off()
+
 png("pictures/original/grid_line_O.png")
-print(plot_grid(p1, p2, p3, p4, p5))
+print(plot_grid(p1, p2, p3, p4, p5, p6, p7))
 dev.off()
 
 # - Preprocess the Data ----
-prep = data[2:7]
+prep = data[3:9]
 str(prep)
 missing = prep %>% mice::mice(m=5,maxit=50,meth="sample",seed=500,print = FALSE)
 missing <- mice::complete(missing, action=as.numeric(2))
@@ -135,13 +167,13 @@ process_data <- read_csv("data/preprocessed_data.csv")
 print(head(process_data))
 
 # Subset Ignoble Variables ----
-sub = process_data[,3:7]
+sub = process_data[1:9]
 str(sub)
 
 summary(sub) # summary stats 
 
 cor = cor(sub) # correlation 
-png("pictures/preprocessed/cor.png")
+png("pictures/preprocessed/cor_P.png")
 print(corrplot::corrplot(cor))    
 dev.off() 
 
@@ -225,7 +257,39 @@ png("pictures/preprocessed/breakeven_inflation_ggplot.png")
 print(p5)    
 dev.off()
 
-png("pictures/preprocessed/grid_line_O.png")
-print(plot_grid(p1, p2, p3, p4, p5))
+p6 = ggplot(data, aes(timestamp, BTC_Volume)) +
+  stat_summary(fun.y = mean, ##adds the points
+               geom = "point") +
+  stat_summary(fun.y = mean, ##adds the line
+               geom = "line",
+               aes(group=1)) +
+  stat_summary(fun.data = mean_cl_normal, ##adds the error bars
+               geom = "errorbar", 
+               width = .2) +
+  xlab('Time')+
+  ylab('Bitcoin Volume')
+
+png("pictures/preprocessed/BTC_Volume_ggplot.png")
+print(p6)    
+dev.off()
+
+p7 = ggplot(data, aes(timestamp, ETH_Volume)) +
+  stat_summary(fun.y = mean, ##adds the points
+               geom = "point") +
+  stat_summary(fun.y = mean, ##adds the line
+               geom = "line",
+               aes(group=1)) +
+  stat_summary(fun.data = mean_cl_normal, ##adds the error bars
+               geom = "errorbar", 
+               width = .2) +
+  xlab('Time')+
+  ylab('Ethereum Volume')
+
+png("pictures/preprocessed/ETH_Volume_ggplot.png")
+print(p7)    
+dev.off()
+
+png("pictures/preprocessed/grid_line_P.png")
+print(plot_grid(p1, p2, p3, p4, p5, p6, p7))
 dev.off()
 
