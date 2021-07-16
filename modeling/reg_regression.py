@@ -15,6 +15,9 @@ from sklearn.metrics import accuracy_score
 from sklearn import utils
 from sklearn import preprocessing
 
+#Seaborn Graphing module
+import seaborn as sns
+
 # Setting working directory
 os.chdir("C:/Users/Pedro G/OneDrive/Desktop/final_project")
 
@@ -47,3 +50,6 @@ confusion_matrix(y_test, y_predict)
 
 # Accuracy result
 print(f"\n- accuracy: {accuracy_score(y_test, y_predict)*100:.1f}% -\n")
+
+# Graph Heatmap
+sns.heatmap(cm/np.sum(cm), vmin = 0, annot = True, linecolor = 'white', cmap = 'Blues')
